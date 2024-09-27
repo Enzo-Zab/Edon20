@@ -1,0 +1,30 @@
+#PARA UTILIZAR ESSES ENDPOINTS É NECESSÁRIO INSTALAR A EXTENSÃO DO VSCODE "REST CLIENT"
+###
+
+GET http://localhost:3333/books
+
+###
+
+POST http://localhost:3333/books
+Content-Type: application/json
+
+{
+    "name": "ORELHA",
+    "author": "FRIDA",
+    "genre": "TERROR"
+}
+
+###
+
+PUT http://localhost:3333/books/c429ecb4-c87a-4595-93b0-408f13690393
+Content-Type: application/json
+
+{
+    "name": "ENZO",
+    "author": "MONTEIRO LOBATO",
+    "genre": "COMEDIA"
+}
+
+###
+
+DELETE http://localhost:3333/books/a3fda57d-cdec-4423-b2c1-0ab8a8eb0eb2

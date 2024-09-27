@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuarios</title>
+</head>
+<body>
+
+    <input type = "text" placeholder = "Name" id = "name">
+    <input type = "text" placeholder = "Author" id = "author">
+    <input type = "text" placeholder = "Genre" id = "genre">
+     <button onclick="criarUsuario()"> </button>
+    CRIAR LIVRO
+</button>
+
+    <p id="usuarios"></p>
+    
+    <script>
+       async function pegarUsuarios(){
+        const resposta = await fetch('http://localhost:3333/books', {
+            method: 'GET'
+        })
+        const users = await resposta.json();
+        console.log(users);
+
+        const elementoP = document.getElementById('usuarios');
+        elementoP.innerHTML = users[5].name;
+
+       
+
+    }
+    pegarUsuarios();
+
+   async function criarUsuario   () {
+    const name = document.getElementById('name').value;
+    const author = document.getElementById('author').value;
+    const genre= document.getElementById('genre').value;
+        const novoUsuario = {
+            "name": name,
+            "author": author,
+            "genre": genre
+        };
+        
+        const resposta =  await fetch('http://localhost:3333/books',{
+            method: 'POST',
+            headers: { 
+                'Content-Type': 'application/json'
+            },
+        body: JSON.stringify(novoUsuario)
+    });
+    }
+    </script>
+</body>
+</html>
